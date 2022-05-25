@@ -1,0 +1,25 @@
+{
+    "name": "hldr",
+    "displayName": "Placeholder",
+    "description": "Language support for Placeholder syntax",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.67.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "hldr",
+            "aliases": ["Placeholder", "hldr"],
+            "extensions": [".hldr"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "hldr",
+            "scopeName": "source.hldr",
+            "path": "./syntaxes/hldr.tmLanguage.json"
+        }]
+    }
+}

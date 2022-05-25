@@ -7,19 +7,26 @@
 		},
 		{
 			"include": "#strings"
-		}
+		},
+    {
+      "include": "#comments"
+    }
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.hldr",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(as)\\b"
 			}]
 		},
+    "comments": {
+      "name": "comment.line.double-dash",
+      "match": "--.*$"
+    },
 		"strings": {
-			"name": "string.quoted.double.hldr",
-			"begin": "\"",
-			"end": "\"",
+			"name": "string.quoted.single.hldr",
+			"begin": "'",
+			"end": "'",
 			"patterns": [
 				{
 					"name": "constant.character.escape.hldr",

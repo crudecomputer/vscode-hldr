@@ -1,26 +1,26 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.hldr",
 	"name": "Placeholder",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-    {
-      "include": "#comments"
-    }
+		{"include": "#keywords"},
+		{"include": "#strings"},
+    {"include": "#comments"},
+    {"include": "#booleans"}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
-				"name": "keyword.control.hldr",
+				"name": "keyword.other.hldr",
 				"match": "\\b(as)\\b"
 			}]
 		},
+    "booleans": {
+      "name": "constant.other.hldr",
+      "match": "\\b(true|false)\\b"
+    },
     "comments": {
-      "name": "comment.line.double-dash",
+      "name": "comment.line.double-dash.hldr",
       "match": "--.*$"
     },
 		"strings": {
@@ -34,6 +34,5 @@
 				}
 			]
 		}
-	},
-	"scopeName": "source.hldr"
+	}
 }

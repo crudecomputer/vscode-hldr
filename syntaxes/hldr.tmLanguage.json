@@ -40,7 +40,7 @@
         },
         "numbers": {
             "name": "constant.numeric.hldr",
-            "match": "\\b\\d+\\b"
+            "match": "\\b[\\d_]+\\b"
         },
         "quoted_identifiers": {
             "name": "variable.other.hldr",
@@ -55,7 +55,7 @@
         },
         "references": {
             "name": "variable.other.hldr",
-            "begin": "#",
+            "begin": "@",
             "end": "\\s",
             "patterns": [
                 { "include": "#keywords" },

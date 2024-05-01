@@ -1,85 +1,91 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"scopeName": "source.hldr",
-	"name": "Placeholder",
-	"patterns": [
-		{"include": "#aliased_tables"},
-		{"include": "#basic_identifiers"},
-    {"include": "#booleans"},
-    {"include": "#comments"},
-		{"include": "#keywords"},
-    {"include": "#numbers"},
-    {"include": "#record_fully_qualified"},
-    {"include": "#record_table_qualified"},
-    {"include": "#record_unqualified"},
-		{"include": "#strings"}
-	],
-	"repository": {
-    "aliased_tables": {
-      "name": "variable.other.hldr",
-      "match": "^\\s+(\\w+) (as) (\\w+)",
-      "captures": {
-        "1": {"name": "variable.other.hldr"},
-        "2": {"name": "keyword.other.hldr"},
-        "3": {"name": "variable.other.hldr"}
-      }
-    },
-    "basic_identifiers": {
-      "name": "variable.other",
-      "match": "^\\s*\\w+$"
-    },
-    "booleans": {
-      "name": "constant.other.hldr",
-      "match": "\\b(true|false)\\b"
-    },
-    "comments": {
-      "name": "comment.line.double-dash.hldr",
-      "match": "--.*$"
-    },
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.other.hldr",
-				"match": "\\b(as)\\b"
-			}]
-		},
-    "numbers": {
-      "name": "constant.numeric.hldr",
-      "match": "\\b\\d+\\b"
-    },
-    "record_fully_qualified": {
-      "match": "\\b(\\w+)\\.(\\w+)(@)(\\w+)\\.\\w+\\b",
-      "captures": {
-        "1": {"name": "variable.other.hldr"},
-        "2": {"name": "variable.other.hldr"},
-        "3": {"name": "keyword.operator.hldr"},
-        "4": {"name": "variable.other.hldr"}
-      }
-    },
-    "record_table_qualified": {
-      "match": "\\b(\\w+)(@)(\\w+)\\.\\w+\\b",
-      "captures": {
-        "1": {"name": "variable.other.hldr"},
-        "2": {"name": "keyword.operator.hldr"},
-        "3": {"name": "variable.other.hldr"}
-      }
-    },
-    "record_unqualified": {
-      "match": "\\s+(@)(\\w+)\\.\\w+\\b",
-      "captures": {
-        "1": {"name": "keyword.operator.hldr"},
-        "2": {"name": "variable.other.hldr"}
-      }
-    },
-		"strings": {
-			"name": "string.quoted.single.hldr",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
-				{
-					"name": "constant.character.escape.hldr",
-					"match": "\\\\."
-				}
-			]
-		}
-	}
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "scopeName": "source.hldr",
+    "name": "Placeholder",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#quoted_identifiers"
+        },
+        {
+            "include": "#booleans"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#references"
+        },
+        {
+            "include": "#sql_fragments"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "booleans": {
+            "name": "constant.language.hldr",
+            "match": "\\b(true|t|false|f)\\b"
+        },
+        "comments": {
+            "name": "comment.line.double-dash.hldr",
+            "match": "--.*$"
+        },
+        "keywords": {
+            "name": "keyword.other.hldr",
+            "match": "\\b(as|schema|table)\\b"
+        },
+        "numbers": {
+            "name": "constant.numeric.hldr",
+            "match": "\\b[\\d_]+\\b"
+        },
+        "quoted_identifiers": {
+            "name": "variable.other.hldr",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.hldr",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "references": {
+            "name": "variable.other.hldr",
+            "begin": "@",
+            "end": "\\s",
+            "patterns": [
+                { "include": "#keywords" },
+                { "include": "#quoted_identifiers" }
+            ]
+        },
+        "sql_fragments": {
+            "name": "constant.numeric.hldr",
+            "begin": "`",
+            "end": "`",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.hldr",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.single.hldr",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.hldr",
+                    "match": "\\\\."
+                }
+            ]
+        }
+    }
 }

@@ -12,11 +12,24 @@ table mytable (
 
   -- Records can be given names that must be unique within their parent table scope
   myrecord (
-    col1 true                 -- Supported literal values include bools, numbers, and text strings
-    col2 123_456.987_654      -- Numbers can be formatted for readability
-    col3 'isn''t this grand?' -- Single quotes in text strings are escaped as they are in SQL
-    col4 '123.456.789'        -- Any type with a text representation, eg. ltree, can be expressed
-                              -- as a string literal much as they would be in SQL
+
+    -- Boolean literals are lowercased and only support `true` and `false`
+    col1 true
+
+    -- Numbers can be formatted for readability, but they must conform to PostgreSQL
+    -- formatting, ie. 123__456 is invalid as is 123_._456
+    col2 123_456.987_654
+
+    -- Single quotes in text strings are escaped as they are in SQL
+    col3 'isn''t this grand?'
+
+    -- Any type with a text representation, eg. ltree, can be expressed
+    -- as a string literal much as they would be in SQL
+    col4 '123.456.789'
+
+    -- Simple `SELECT` statements can be used by omitting the `SELECT` keyword
+    -- and enclosing with backticks. The result must only be a single row and column.
+    col5 `ts from (select current_timestamp as ts) q`
   )
 
   -- Or they can be anonymous, with or without the `_` identifier

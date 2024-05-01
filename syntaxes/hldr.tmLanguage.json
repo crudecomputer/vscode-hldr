@@ -22,6 +22,9 @@
             "include": "#references"
         },
         {
+            "include": "#sql_fragments"
+        },
+        {
             "include": "#strings"
         }
     ],
@@ -60,6 +63,17 @@
             "patterns": [
                 { "include": "#keywords" },
                 { "include": "#quoted_identifiers" }
+            ]
+        },
+        "sql_fragments": {
+            "name": "constant.numeric.hldr",
+            "begin": "`",
+            "end": "`",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.hldr",
+                    "match": "\\\\."
+                }
             ]
         },
         "strings": {
